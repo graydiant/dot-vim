@@ -33,6 +33,7 @@ set guifont=Droid\ Sans\ Mono:h12
 
 " activate TAB auto-completion for file paths
 set wildmode=list:longest
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 imap <Tab> <C-P>
 
 set incsearch
