@@ -57,6 +57,7 @@ endfunction
 nnoremap <leader>n :NERDTreeToggle<CR>
 
 " fuzzyfinder mapping
+let ignorefile = ".gitignore"
 nnoremap <leader>ff :FufFile<CR>
 nnoremap <leader>fb :FufBuffer<CR>
 nnoremap <leader>fd :FufDir<CR>
@@ -65,8 +66,11 @@ nnoremap <leader>ft :FufCoverageFile<CR>
 :hi Pmenu ctermbg=blue
 
 " reload .vimrc
-nnoremap <leader>ev :e ~/.vimrc<CR>
-nnoremap <leader>vr :source ~/.vimrc<CR>
+nnoremap <leader>ev :e ~/.vim/vimrc<CR>
+nnoremap <leader>vr :source ~/.vim/vimrc<CR>
 
 "vroom setup
 let g:vroom_cucumber_path = 'cucumber'
+
+nnoremap <leader>bc :Bclose<CR>
+
