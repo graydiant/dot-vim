@@ -2,14 +2,14 @@
 "Forget compatibility with Vi. Who cares.  
 set nocompatible
 
+"activate pathogen
+call pathogen#infect()
+
 "Enable filetypes
 filetype on
 filetype plugin on
 filetype indent on
 syntax on
-
-"activate pathogen
-call pathogen#infect()
 
 let mapleader = ","
 set ignorecase
