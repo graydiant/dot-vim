@@ -1,14 +1,34 @@
 "This must be first, because it changes other options as a side effect.
 "Forget compatibility with Vi. Who cares.  
 set nocompatible
+filetype off
 
-"activate pathogen
-call pathogen#infect()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/nerdtree'
+Bundle 'godlygeek/tabular'
+Bundle 'skalnik/vim-vroom'
+Bundle 'tpope/vim-haml'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'wincent/Command-T'
 
 "Enable filetypes
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 syntax on
 
 let mapleader = ","
@@ -21,6 +41,7 @@ set backspace=indent,eol,start
 set number
 set ruler
 set ts=2 sts=2 sw=2 expandtab
+set paste
 
 " show hidden characters
 set list
@@ -40,7 +61,7 @@ set incsearch
 
 " automatically tabularize tables using the pie character
 " https://gist.github.com/tpope/287147
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+inoremap <silent> <Bar>   <Bar><Ec>:vall <SID>align()<CR>a
 
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
