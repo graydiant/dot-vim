@@ -25,7 +25,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'wincent/Command-T'
+" Bundle 'wincent/Command-T'
+Bundle "kien/ctrlp.vim"
 
 "Enable filetypes
 filetype plugin indent on
