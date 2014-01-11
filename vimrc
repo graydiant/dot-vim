@@ -26,6 +26,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 " Bundle 'wincent/Command-T'
+Bundle 'ack.vim'
 Bundle "kien/ctrlp.vim"
 
 "Enable filetypes
