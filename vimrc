@@ -25,9 +25,20 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
-" Bundle 'wincent/Command-T'
 Bundle 'ack.vim'
 Bundle "kien/ctrlp.vim"
+" snipmate stuff:
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+Bundle 'bling/vim-airline'
+
+set t_Co=256
+
+" airline
+:set laststatus=2
+let g:airline_theme='murmur'
 
 "Enable filetypes
 filetype plugin indent on
@@ -95,5 +106,9 @@ nnoremap <leader>vr :source ~/.vim/vimrc<CR>
 "vroom setup
 let g:vroom_cucumber_path = 'cucumber'
 
+let g:rubytest_in_quickfix = 1
+
 nnoremap <leader>bc :Bclose<CR>
+
+set clipboard=unnamed
 
