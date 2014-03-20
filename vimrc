@@ -11,6 +11,8 @@ runtime macros/matchit.vim
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
 Bundle 'godlygeek/tabular'
@@ -114,3 +116,5 @@ nnoremap <leader>bc :Bclose<CR>
 
 set clipboard=unnamed
 
+" ctrlp
+let g:ctrlp_follow_symlinks = 1
