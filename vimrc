@@ -6,6 +6,8 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+runtime macros/matchit.vim
+
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
@@ -38,7 +40,7 @@ set t_Co=256
 
 " airline
 :set laststatus=2
-let g:airline_theme='murmur'
+let g:airline_theme='ubaryd'
 
 "Enable filetypes
 filetype plugin indent on
