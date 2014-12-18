@@ -1,5 +1,5 @@
 "This must be first, because it changes other options as a side effect.
-"Forget compatibility with Vi. Who cares.  
+"Forget compatibility with Vi. Who cares.
 set nocompatible
 filetype off
 
@@ -15,6 +15,7 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'skalnik/vim-vroom'
 Bundle 'tpope/vim-haml'
@@ -31,12 +32,23 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'ack.vim'
 Bundle "kien/ctrlp.vim"
+Bundle "othree/html5.vim"
 " snipmate stuff:
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
 Bundle 'bling/vim-airline'
+Bundle 'kana/vim-fakeclip'
+
+" Angular
+Bundle 'burnettk/vim-angular'
+Bundle 'pangloss/vim-javascript'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'matthewsimo/angular-vim-snippets'
+Bundle 'claco/jasmine.vim'
+Bundle 'elzr/vim-json'
+
 
 set t_Co=256
 
@@ -109,6 +121,8 @@ nnoremap <leader>vr :source ~/.vim/vimrc<CR>
 
 "vroom setup
 let g:vroom_cucumber_path = 'cucumber'
+let g:vroom_use_spring = 1
+let g:vroom_use_zeus = 0
 
 let g:rubytest_in_quickfix = 1
 
@@ -118,3 +132,12 @@ set clipboard=unnamed
 
 " ctrlp
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components)$'
+
+" syntastic options
+let g:syntastic_haml_checkers = ['haml_lint']
+let g:syntastic_html_tidy_ignore_errors=[
+  \ ' proprietary attribute \"ng-'
+  \ , '<img> lacks "alt" attribute'
+  \ , '<img> lacks "src" attribute'
+  \ ]
