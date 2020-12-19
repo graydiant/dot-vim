@@ -1,90 +1,69 @@
-"This must be first, because it changes other options as a side effect.
+"this must be first, because it changes other options as a side effect.
 "Forget compatibility with Vi. Who cares.
-set nocompatible
-set fileencoding=utf-8
-set encoding=utf-8
-filetype off
+" ,set langmenu=en_US.UTF-8
+language en_CA.UTF-8
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set nocompatible
+set fileencoding=UTF-8
+set encoding=UTF-8
+
+call plug#begin('~/.vim/plugged')
 
 runtime macros/matchit.vim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
-Bundle 'ack.vim'
-Bundle 'itchyny/lightline.vim'
-Bundle "ctrlpvim/ctrlp.vim"
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/nerdtree'
-Plugin 'w0rp/ale'
-Bundle 'godlygeek/tabular'
-" Bundle 'scrooloose/syntastic'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'skalnik/vim-vroom'
-Bundle 'tpope/vim-haml'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-rvm'
-Bundle 'vim-ruby/vim-ruby'
-Bundle "othree/html5.vim"
-" snipmate stuff:
-" Bundle "MarcWeber/vim-addon-mw-utils"
-" Bundle "tomtom/tlib_vim"
-" Bundle "garbas/vim-snipmate"
-" Bundle 'isRuslan/vim-es6'
-" Bundle 'pangloss/vim-javascript'
-Bundle 'othree/yajs.vim'
-" Bundle "bentayloruk/vim-react-es6-snippets"
-" /snipmate stuff:
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'scrooloose/nerdtree'
+
+Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
+Plug 'othree/html5.vim'
+" Plug 'styled-components/vim-styled-components'
+
 " ultisnips
-Bundle "SirVer/ultisnips"
-Bundle "honza/vim-snippets"
-Bundle 'graydiant/vim-react-snippets'
-Bundle 'epilande/vim-es2015-snippets'
-Bundle 'hotoo/jsgf.vim'
+Plug 'honza/vim-snippets'
+Plug 'mlaursen/vim-react-snippets'
 "/ ultisnips
-" Bundle 'bling/vim-airline'
-" Bundle 'vim-airline/vim-airline-themes'
-Bundle 'kana/vim-fakeclip'
-Bundle 'Yggdroot/indentLine'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'avdgaag/vim-phoenix'
-Bundle 'mxw/vim-jsx'
-" Bundle 'MaxMEllon/vim-jsx-pretty'
-Bundle 'mattn/emmet-vim'
-Bundle 'kewah/vim-stylefmt'
-Bundle 'styled-components/vim-styled-components'
-Bundle 'https://github.com/wesQ3/vim-windowswap'
-Bundle 'hail2u/vim-css3-syntax'
+Plug 'kana/vim-fakeclip'
+Plug 'Yggdroot/indentLine'
+Plug 'hail2u/vim-css3-syntax'
+
+Plug 'styled-components/vim-styled-components'
+Plug 'jparise/vim-graphql'
+Plug 'elzr/vim-json'
+
+" Plug 'peitalin/vim-jsx-typescript'
+Plug 'othree/yajs.vim'
+Plug 'yuezk/vim-js'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'neoclide/vim-jsx-improve'
 
 " themes
-Bundle 'mhartington/oceanic-next'
-Bundle 'sonph/onehalf'
-Bundle 'joshdick/onedark.vim'
-Plugin 'jacoborus/tender.vim'
+" Plug 'chriskempson/base16-vim'
+
+Plug 'mhartington/oceanic-next'
+
+" Plug 'connorholyday/vim-snazzy'
+
+call plug#end()
+
+
 
 let g:indentLine_char = '|'
 
-" Angular
-" Bundle 'burnettk/vim-angular'
-" Bundle 'matthewsimo/angular-vim-snippets'
-" Bundle 'claco/jasmine.vim'
-" Bundle 'elzr/vim-json'
-" emberjs
-" " Bundle 'mustache/vim-mustache-handlebars'
-
 "Enable filetypes
 filetype plugin indent on
-syntax on
 
 let mapleader = ","
 set ignorecase
@@ -101,108 +80,213 @@ set expandtab ts=2 sts=2 sw=2 ai
 set list
 set listchars=tab:▸\ ,eol:¬
 
-" activate TAB auto-completion for file paths
-set wildmode=list:longest
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-" imap <Tab> <C-P>
-
 set incsearch
+"FZF
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <C-g> :Rg<CR>
 
 " NERDTree mapping
 nnoremap <leader>n :NERDTreeToggle<CR>
-
-" fuzzyfinder mapping
-let ignorefile = ".gitignore"
-nnoremap <leader>ff :FufFile<CR>
-nnoremap <leader>fb :FufBuffer<CR>
-nnoremap <leader>fd :FufDir<CR>
-nnoremap <leader>ft :FufCoverageFile<CR>
-" fuzzyfinder dropdown background in twilight theme
-" :hi Pmenu ctermbg=blue
 
 " reload .vimrc
 nnoremap <leader>ev :e ~/.vim/vimrc<CR>
 nnoremap <leader>vr :source ~/.vim/vimrc<CR>
 
-"vroom setup
-let g:vroom_use_spring = 0
-let g:vroom_use_binstubs = 0
-let g:vroom_use_zeus = 0
-
-let g:rubytest_in_quickfix = 1
-
-let g:vim_jsx_pretty_colorful_config = 1 " default 0
+let g:vim_jsx_pretty_colorful_config = 0 " default 0
 
 nnoremap <leader>bc :Bclose<CR>
 
-" ctrlp
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_custom_ignore = '\v[\/](deps|node_modules|bower_components|dist|log|_build)$'
-" map <leader>cpc :CtrlPClearCache<CR>
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+" let g:user_emmet_leader_key='<C-Y>'
+" let g:user_emmet_mode='a'
+" let g:user_emmet_settings = {
+" \  'javascript.jsx' : {
+"   \      'extends' : ['jsx', 'css'],
+"   \  },
+" \}
 
-" CtrlP auto cache clearing.
-" ----------------------------------------------------------------------------
-function! SetupCtrlP()
-  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    augroup CtrlPExtension
-      autocmd!
-      autocmd FocusGained  * CtrlPClearCache
-      autocmd BufWritePost * CtrlPClearCache
-    augroup END
-  endif
-endfunction
-if has("autocmd")
-  autocmd VimEnter * :call SetupCtrlP()
+imap <leader><leader> <Esc>
+
+" pretty colours
+set guifont=Fira\ Code:h12
+
+
+set t_ut=
+set t_Co=256
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'css': ['prettier', 'stylelint'],
-\}
-let g:ale_javascript_eslint_use_global = 0
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'css': ['prettier', 'stylelint'],
-\   'ruby': ['rubocop']
-\}
-let g:ale_fix_on_save = 1
-
-" emmet stuff
-let g:user_emmet_leader_key='<C-Y>'
-let g:user_emmet_mode='a'
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-  \      'extends' : ['jsx', 'css'],
-  \  },
-\}
-nnoremap <silent> <leader>cs :Stylefmt<CR>
-imap ;; <Esc>
-
-let g:UltiSnipsExpandTrigger="<tab>"
-
-" set autochdir
-" pretty colours
-set guifont=Hack:h12
-
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-set termguicolors
-
-set background=dark " Setting dark mode
-
-" colorscheme Tomorrow-Night
-" colorscheme twilight256
+syntax enable
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 colorscheme OceanicNext
-" colorscheme onedark
-
+set background=dark
 
 " airline
 :set laststatus=2
 " let g:airline_theme='oceanicnext'
-" let g:airline_theme='onehalfdark'
-let g:lightline = {
-  \ 'colorscheme': 'oceanicnext',
-  \ }
+" let g:airline_powerline_fonts = 1
+" let g:eleline_powerline_fonts = 1
+" let g:lightline = {
+"   \ 'colorscheme': 'oceanicnext',
+"   \ }
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
 
+let g:lightline = {
+      \ 'colorscheme': 'oceanicnext',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
+
+
+  " if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=100
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set eslint.autoFixOnSave = 1
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" maybe deal with slow COC
+let g:coc_node_args = ['--max-old-space-size=8192']

@@ -1,0 +1,11 @@
+{
+  "eslint.autoFixOnSave" : true,
+  "eslint.packageManager": "yarn",
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "suggest.minTriggerInputLength": 3,
+  "phpactor.path": "/usr/local/bin/phpactor"
+}
